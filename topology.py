@@ -13,19 +13,19 @@ class LinearTopo(Topo):
             hconf: host configuration options
             lconf: link configuration options"""
 
-    #super(LinearTopo, self).__init__(**opts)
+        super(LinearTopo, self).__init__(**opts)
 
-    self.k = k
-    lastSwitch = None
-    for i in irange(1,k):
-        host = self.addHost('h%s' % i, cpu = .5/k)
-        switch = self.addSwitch('s%s' % i)
-        #10 Mbps, 5ms delay, 1% loss, 1000 packet queue
-        self.addLink(host, switch, bw = 10, delay = '5ms', loss = 1, max_queue_size = 1000, use_htb = True)
+        self.k = k
+        lastSwitch = None
+        for i in irange(1,k):
+            host = self.addHost('h%s' % i, cpu = .5/k)
+            switch = self.addSwitch('s%s' % i)
+            #10 Mbps, 5ms delay, 1% loss, 1000 packet queue
+            self.addLink(host, switch, bw = 10, delay = '5ms', loss = 1, max_queue_size = 1000, use_htb = True)
 
-        if lastSwitch:
-                self.addLink(switch, lastSwitch, bw = 10, delay = '5ms', loss = 1, max_queue_size = 1000, use_htb = True)
-        lastSwitch = switch
+            if lastSwitch:
+                    self.addLink(switch, lastSwitch, bw = 10, delay = '5ms', loss = 1, max_queue_size = 1000, use_htb = True)
+            lastSwitch = switch
 
 def simpleTest():
     "Create and test a simple network"
