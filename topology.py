@@ -18,16 +18,18 @@
         self.k = k
         lastSwitch = None
         for i in irange(1,k):
-            host = self.addHost('h%s' % i)
+            host = self.addHost('h%s' % i, cpu = .5/k)
             switch = self.addSwitch('s%s' % i)
-            self.addLink(host, switch)
+            #10 Mbps, 5ms delay, 1% loss, 1000 packet queue
+            self.addLink(host, switch, bw = 10, delay = '5ms', loss = 1, max_queue_size = 1000, use_htb = True)
+
             if lastSwitch:
-                    self.addLink(switch, lastSwitch)
+                    self.addLink(switch, lastSwitch, bw = 10, delay = '5ms', loss = 1, max_queue_size = 1000, use_htb = True)
             lastSwitch = switch
 
     def simpleTest():
         "Create and test a simple network"
-        topo = SingleSwitchTopo(k=4)
+        topo = LinearTopo(k=4)
         net = Mininet(topo)
         net.start()
         print "Dumping host connections"
@@ -36,7 +38,22 @@
         net.pingAll()
         net.stop()
 
+    def perfTest():
+        "Create network and run simple performance test"
+        topo = LinearTopo(k=4)
+        net = Mininet(topo=topo, host = CPULimitedHost, link = TCLink)
+        net.start()
+        print "Dumping host connections"
+        dumpNodeConnections(net.hosts)
+        print "Testing network connectivity"
+        net.pingAll()
+        print "Testing Bandwidth between h1 and h4"
+        h1,h4 = net.get('h1', 'h4')
+        net.iperf((h1,h4))
+        net.stop()
+
     if __name__ == '__main__':
         # Tell mininet to print useful information
         setLogLevel('info')
-        simpleTest()
+        #simpleTest()
+        perfTest()
