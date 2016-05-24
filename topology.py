@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
-    from mininet.topo import Topo
-    from mininet.net import Mininet
-    from mininet.util import irange,dumpNodeConnections
-    from mininet.log import setLogLevel
+from mininet.topo import Topo
+from mininet.net import Mininet
+from mininet.util import irange,dumpNodeConnections
+from mininet.log import setLogLevel
 
     class LinearTopo(Topo):
         "Linear topology of k switches, with one host per switch."
