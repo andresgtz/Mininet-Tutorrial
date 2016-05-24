@@ -13,7 +13,7 @@ class LinearTopo(Topo):
             hconf: host configuration options
             lconf: link configuration options"""
 
-    super(LinearTopo, self).__init__(**opts)
+    #super(LinearTopo, self).__init__(**opts)
 
     self.k = k
     lastSwitch = None
