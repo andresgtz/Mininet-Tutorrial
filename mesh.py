@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from mininet.topo import Topo
 from mininet.net import Mininet
-from mininet.node import CPULimitedHost
+from mininet.node import CPULimitedHost,OVSSwitch, Controller, RemoteController
 from mininet.link import TCLink
 from mininet.util import irange,dumpNodeConnections
 from mininet.log import setLogLevel
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     #adding controller
 
     floodlight = net.addController(name='floodlight' ,
-                             controller=RemoteController ,
+                             controller=RemoteController,
                              ip='192.168.56.101',
                              port=6653)
     net.start()
