@@ -2,7 +2,7 @@
 
 from functools import partial
 from mininet.cli import CLI
-from mininet.link import TCLink
+
 from mininet.log import setLogLevel
 from mininet.net import Mininet
 from mininet.node import OVSKernelSwitch
