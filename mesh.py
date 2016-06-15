@@ -63,6 +63,10 @@ if __name__ == '__main__':
                              ip='192.168.56.101',
                              port=6653)
     net.start()
+    print "Dumping host connections"
+    dumpNodeConnections(net.hosts)
+    print "Testing network connectivity"
+    net.pingAll()
 
 
 #topos = { 'MyNet': ( lambda: MyNet() ) }
