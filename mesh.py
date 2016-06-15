@@ -2,7 +2,7 @@
 
 from functools import partial
 from mininet.cli import CLI
-
+from mininet.link import TCLink
 from mininet.log import setLogLevel
 from mininet.net import Mininet
 from mininet.node import OVSKernelSwitch
@@ -57,5 +57,13 @@ class MyNet( Topo ):
                                  ip='192.168.56.101',
                                  port=6653)
 
-        self.start()
-topos = { 'MyNet': ( lambda: MyNet() ) }
+
+if __name__ == '__main__':
+    # Tell mininet to print useful information
+    setLogLevel('info')
+    topo = MyNet()
+    net = Mininet(topo)
+    net.start()
+
+
+#topos = { 'MyNet': ( lambda: MyNet() ) }
