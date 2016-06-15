@@ -28,24 +28,24 @@ class MyNet( Topo ):
         s5 = self.addSwitch( 's5' )
 
         # Add links
-        self.addLink( h1, s1 ,bw=10)
-        self.addLink( h1, s2 ,bw=10)
+        self.addLink( h1, s1 )
+        self.addLink( h1, s2 )
 
-        self.addLink( h2, s2 ,bw=10)
-        self.addLink( h2, s3 ,bw=10)
+        self.addLink( h2, s2 )
+        self.addLink( h2, s3 )
 
-        self.addLink( h3, s3 ,bw=10)
+        self.addLink( h3, s3 )
 
-        self.addLink( s1, s2 ,bw=10)
-        self.addLink( s1, s4 ,bw=10)
+        self.addLink( s1, s2 )
+        self.addLink( s1, s4 )
 
-        self.addLink( s2, s3 ,bw=10)
-        self.addLink( s2, s4 ,bw=10)
-        self.addLink( s2, s5 ,bw=10)
+        self.addLink( s2, s3 )
+        self.addLink( s2, s4 )
+        self.addLink( s2, s5 )
 
-        self.addLink( s3, s5 ,bw=10)
+        self.addLink( s3, s5 )
 
-        self.addLink( s4, s5 ,bw=10)
+        self.addLink( s4, s5 )
 
 
 
