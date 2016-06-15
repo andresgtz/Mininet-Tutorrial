@@ -57,4 +57,5 @@ class MyNet( Topo ):
                                  ip='192.168.56.101',
                                  port=6653)
 
+        self.start()
 topos = { 'MyNet': ( lambda: MyNet() ) }
