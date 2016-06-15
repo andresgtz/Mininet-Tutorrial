@@ -47,12 +47,7 @@ class MyNet( Topo ):
 
         self.addLink( s4, s5 ,bw=10)
 
-        #adding controller
 
-        floodlight = net.addController(name='floodlight' ,
-                                 controller=RemoteController ,
-                                 ip='192.168.56.101',
-                                 port=6653)
 
 
 if __name__ == '__main__':
@@ -60,6 +55,13 @@ if __name__ == '__main__':
     setLogLevel('info')
     topo = MyNet()
     net = Mininet(topo)
+
+    #adding controller
+
+    floodlight = net.addController(name='floodlight' ,
+                             controller=RemoteController ,
+                             ip='192.168.56.101',
+                             port=6653)
     net.start()
 
 
